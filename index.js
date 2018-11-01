@@ -14,7 +14,8 @@ const pubKey = ethUtil.privateToPublic(addrNode._privateKey);
 const addr = ethUtil.publicToAddress(pubKey).toString('hex');
 const address = ethUtil.toChecksumAddress(addr);
 
-console.log(mnemonic);
-console.log(`0x${addr}`);
-console.log(addrNode._privateKey);
+const privKey = addrNode._privateKey.toString('hex');
 
+console.log(mnemonic);
+console.log(address);
+console.log(privKey);
