@@ -3,19 +3,26 @@ const hdkey = require('hdkey');
 const ethUtil = require('ethereumjs-util');
 const ethTx = require('ethereumjs-tx');
 
-const mnemonic = bip39.generateMnemonic(); //generates string
-const seed = bip39.mnemonicToSeed(mnemonic); //creates seed buffer
+function generate() {
+    const mnemonic = bip39.generateMnemonic(); //generates string
+    const seed = bip39.mnemonicToSeed(mnemonic); //creates seed buffer
 
-const root = hdkey.fromMasterSeed(seed);
-const masterPrivateKey = root.privateKey.toString('hex');
+    const root = hdkey.fromMasterSeed(seed);
+    const addrNode = root.derive("m/44'/60'/0'/0/0"); //line 1
 
-const addrNode = root.derive("m/44'/60'/0'/0/0"); //line 1
-const pubKey = ethUtil.privateToPublic(addrNode._privateKey);
-const addr = ethUtil.publicToAddress(pubKey).toString('hex');
-const address = ethUtil.toChecksumAddress(addr);
+    const pubKey = ethUtil.privateToPublic(addrNode._privateKey);
+    const addr = ethUtil.publicToAddress(pubKey).toString('hex');
 
-const privKey = addrNode._privateKey.toString('hex');
+    const address = ethUtil.toChecksumAddress(addr);
+    const privKey = addrNode._privateKey.toString('hex');
 
-console.log(mnemonic);
-console.log(address);
-console.log(privKey);
+    document.getElementById("public").textContent = address;
+    document.getElementById("secret").textContent = privKey;
+    document.getElementById("seed").textContent = mnemonic;
+    // console.log(mnemonic);
+    // console.log(address);
+    // console.log(privKey);
+}
+
+module.exports = generate;
+// generate()
