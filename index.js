@@ -22,6 +22,21 @@ function generate() {
     // console.log(mnemonic);
     // console.log(address);
     // console.log(privKey);
+    document.getElementById("public_qr").textContent = "";
+    document.getElementById("secret_qr").textContent = "";
+    
+    new QRCode(document.getElementById("public_qr"), {
+        text: address,
+        width: 128,
+        height: 128,
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    new QRCode(document.getElementById("secret_qr"), {
+        text: privKey,
+        width: 128,
+        height: 128,
+        correctLevel: QRCode.CorrectLevel.H
+    });
 }
 
 module.exports = generate;
