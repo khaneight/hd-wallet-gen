@@ -6,34 +6,50 @@
     <script src="bundle.js"></script>
     <script src="qrcode.js"></script>
     <style>
-        body{background-color:rgb(0, 65, 102); font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 14px}
+        body{background-color:rgb(4, 80, 124); font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 14px}
         table{background-color: rgb(220, 231, 243);border-collapse: collapse;margin:10px 0;}
         td,th{border: 2px solid #ffffffa2;text-align: left;padding: 7px;}
+        a{color:#ffab2c}a:hover{color:#ff9900}
         .button{padding:5px 10px;text-align:center;text-decoration:none;display:inline-block;margin:4px 0;cursor:pointer;}
         .button1{margin-left:2px;background-color:#f6f5f2;color:black;border:1px solid #7a7a7a;}
-        .button2{background-color:#ffa61f;color:#ffffff;border:1px solid #7a7a7a;}
+        .button2{background-color:#ffab2c;color:#ffffff;border:1px solid #7a7a7a;}
         .button:hover{background-color:#ff9900;color:#f6f5f2;}
-        #shareColor{color:green}#secretColor{color:red}.grayHeaders{background-color: #f6f5f2;}@media print{.noprint {display:none;}}#secret_qr,#public_qr{height:130px;}
-        #secret_qr,#public_qr{height:130px;}#container{margin: auto;max-width: 500px;}#secret,#public,#seed{font-size: 14px;font-family: monospace;}
+        #shareColor{color:green}#secretColor{color:red}#titleGen{background-color:#e7e5e5}.grayHeaders{background-color: #f6f5f2;}@media print{.noprint {display:none;}}#secret_qr,#public_qr{height:130px;}
+        #secret_qr,#public_qr{height:130px;}#container{margin: auto;max-width: 500px;}#secret,#public,#seed{font-size: 14px;font-family: monospace;}#footer{color:#f6f5f2}#update{color:#f6f5f2}
     </style>
 </head>
 <body onload="generate()">
-    <div id="container">
+<div id="container">
     <div class="noprint">
         <button class="button button2" onclick="generate()">Generate</button>
         <button class="button button1" onclick="window.print()">Print</button>
     </div>
     <table>
-        <tr><th class="grayHeaders" id="titleGen"><span id="currencyName">Ethereum</span> Paper Wallet</th></tr>
+        <tr><th id="titleGen"><span id="currencyName">Ethereum</span> Paper Wallet</th></tr>
         <tr><th class="grayHeaders">Public Address <span id="shareColor">(SHARE)</span></th></tr>
         <tr><td><div id="public">Generating...</div></td></tr>
         <tr><td><div id="public_qr"></div></td></tr>
         <tr><th class="grayHeaders"><div id="secretLabel">Private Key <span id="secretColor">(SECRET)</span></div></th></tr>
         <tr><td><div id="secret">Generating...</div></td></tr>
         <tr><td><div id="secret_qr"></div></td></tr>
-        <tr><th class="grayHeaders"><div id="secretLabel">Recovery Seed <span id="secretColor">(SECRET)</span></div></th></tr>
+        <tr><th class="grayHeaders"><div id="secretLabel">Seed Phrase <span id="secretColor">(SECRET)</span></div></th></tr>
         <tr><td><div id="seed">Generating...</div></td></tr>
+        <tr><th class="grayHeaders">Instructions</th>
+        <tr><td><small>
+            <b>1. Generate a new paper wallet</b> by clicking on the "Generate" button. Download the zip file below and run index.html on an offline computer for maximum security.
+            <br><b>2. Print your new wallet</b> by clicking on the "Print" button. It is highly recommended to print multiple copies and store seperately in secure locations.
+            <br><b>3. Public Address</b> is used to send and receive funds. Check your balance and transaction history by going to <a href="https://www.etherscan.io/" target=_blank>etherscan.io</a> and entering your public address.
+            <br><b>4. Private Key</b> is used to sign and verify transactions. Do not share your private key with anyone or your funds will be stolen.
+            <br><b>4. Seed Phrase</b> is used to recover your wallet in case you lose access. Many wallet providers support importing a wallet through its seed phrase. Do not share your private key with anyone or your funds will be stolen.
+        </small></td></tr>
     </table>
+    <div id="footer" class="noprint">
+        See <a href="https://github.com/khaneight/hdwalletgen" target=_blank>Github repository</a> for more information. <a href="https://github.com/khaneight/hdwalletgen/releases"
+            target=_blank>(Download zip).</a>
+        <br>
+        <br>
+        <div id="update"></div>
     </div>
+</div>
 </body>
 </html>
