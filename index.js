@@ -24,7 +24,6 @@ function generate() {
     // console.log(privKey);
     document.getElementById("public_qr").textContent = "";
     document.getElementById("secret_qr").textContent = "";
-    document.getElementById("update").textContent = "Latest update: " + document.lastModified;
     
     new QRCode(document.getElementById("public_qr"), {
         text: address,
