@@ -1,34 +1,36 @@
 # hd-wallet-gen
-lightweight hd paper wallet generator for ethereum
+Lightweight paper wallet generator for ethereum
+
+Generates keypair with seed phrase for recovery
 
 # installation 
-download latest version here:
+Download latest version here:
 
 https://github.com/khaneight/hd-wallet-gen/releases
 
-run index.html from secure offline computer for maximum security
+Run index.html from secure offline computer for maximum security
 
 # developers
-setup development environment
+Setup development environment
 
 `npm install`
 
-install dev dependencies
+Install dev dependencies
 
 `npm install -g browserify watchify`
 
-use browserify to bundle node modules for html build 
+Use browserify to bundle node modules for html build 
 
-(or use watchify to automate this any time changes are made)
+(or use watchify to automatically detect changes and execute)
 
 `browserify index.js --s generate > bundle.js` 
 
 `watchify index.js --s generate > bundle.js`
 
-add script tag to html file
+Add script tag to html file
 ```html 
 <script src="bundle.js"></script>
 ```
-or alternatively add script tags for each module dependency: 
+Alternatively, manually add script tags for each module dependency 
 
-bip39, hdkey, ethereumjs-tx, ethereumjs-util
+(bip39, hdkey, ethereumjs-tx, ethereumjs-util)
